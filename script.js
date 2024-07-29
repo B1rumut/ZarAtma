@@ -11,7 +11,7 @@ document.getElementById("start-game").addEventListener("click", () => {
     gameContainer.classList.remove("hidden");
     rollDiceButton.classList.remove("hidden");
     backButton.classList.remove("hidden");
-    
+
     // Başlangıçta zarları görünür yap
     dice1.classList.remove("hidden");
     dice2.classList.remove("hidden");
@@ -20,30 +20,32 @@ document.getElementById("start-game").addEventListener("click", () => {
 });
 
 rollDiceButton.addEventListener("click", () => {
-    // Zarları animasyonlu hale getir
     dice1.classList.add("animate");
     dice2.classList.add("animate");
     dice1.classList.remove("no-animation");
     dice2.classList.remove("no-animation");
+    
+    // Başlangıçta zarları boş bırak
     dice1.textContent = '';
     dice2.textContent = '';
     
+    // 4 saniye sonra zarları güncelle
     setTimeout(() => {
         const result1 = rollDice();
         const result2 = rollDice();
-        
+
         // Zarların sonuçlarını güncelle
         dice1.textContent = result1;
         dice2.textContent = result2;
-        
+
         // Animasyonu kaldır ve zarları sadece sayı ile göster
         dice1.classList.remove("animate");
         dice2.classList.remove("animate");
         dice1.classList.add("no-animation");
         dice2.classList.add("no-animation");
-        
+
         resultDiv.textContent = `ZAR 1: ${result1}, ZAR 2: ${result2}, TOPLAM: ${result1 + result2}`;
-    }, 4000); // Atış süresi kadar 4 saniye bekle
+    }, 4000); // Animasyon süresi kadar bekle
 });
 
 backButton.addEventListener("click", () => {
