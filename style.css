@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #8B4513; /* Kahverengi arka plan */
+    background: #000; /* Kahverengi arka plan */
     font-family: Arial, sans-serif;
     position: relative;
 }
