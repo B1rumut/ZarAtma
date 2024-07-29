@@ -49,7 +49,7 @@ h1 {
     font-size: 3em; /* Başlık boyutunu büyüttük */
     margin-bottom: 30px; /* Başlık ile buton arasında mesafe */
     color: #000; /* Başlık rengini siyah yap */
-    animation: spin 4s linear infinite; /* Başlangıçtaki "ZAR" yazısının dönme animasyonu */
+    animation: pulse 2s infinite; /* Hafif büyüyüp küçülme animasyonu */
 }
 
 button {
@@ -135,7 +135,7 @@ button:hover {
 }
 
 .dice.animate {
-    animation: roll 4s cubic-bezier(0.2, 1, 0.3, 1) forwards; /* Animasyonu 4 saniye yap */
+    animation: roll 4s cubic-bezier(0.2, 1, 0.3, 1) forwards;
 }
 
 @keyframes roll {
@@ -162,5 +162,17 @@ button:hover {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
     }
 }
