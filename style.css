@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #8B4513; /* Kahverengi arka plan */
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        #fff 0,
+        #fff 50px,
+        #000 50px,
+        #000 100px
+    );
+    z-index: -1;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    font-size: 3em; /* Başlık boyutunu büyüttük */
+    margin-bottom: 30px; /* Başlık ile buton arasında mesafe */
+    color: #000; /* Başlık rengini siyah yap */
+    animation: spin 4s linear infinite; /* Başlangıçtaki "ZAR" yazısının dönme animasyonu */
+}
+
+button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase; /* Başlık metnini büyük harf yap */
+}
+
+button:hover {
+    background-color: #333;
+    transform: scale(1.1);
+}
+
+#dice-results {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    font-size: 2em; /* Zar sonuçlarının boyutunu büyüttük */
+}
+
+.dice {
+    width: 100px;
+    height: 100px;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-size: 3em; /* Zar üzerindeki sayıların boyutunu büyüttük */
+    color: #000;
+    position: relative;
+    overflow: hidden; /* İçerikleri taşmasını önlemek için */
+    text-align: center;
+}
+
+.dice::before {
+    content: ""; /* İçeriği temizledik */
+    width: 20px; /* Yuvarlağın genişliği */
+    height: 20px; /* Yuvarlağın yüksekliği */
+    border-radius: 50%; /* Yuvarlak şekli */
+    background-color: #000; /* Yuvarlağın rengi */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Ortalamak için */
+}
+
+.dice.one::before {
+    /* Zarın "1" olduğunu temsil eden yuvarlak */
+}
+
+.dice.two::before {
+    /* Zarın "2" olduğunu temsil eden yuvarlak, farklı yerleşim */
+}
+
+.dice.three::before {
+    /* Zarın "3" olduğunu temsil eden yuvarlak, farklı yerleşim */
+}
+
+.dice.four::before {
+    /* Zarın "4" olduğunu temsil eden yuvarlaklar, dört köşede */
+}
+
+.dice.five::before {
+    /* Zarın "5" olduğunu temsil eden yuvarlaklar, dört köşede ve merkezde */
+}
+
+.dice.six::before {
+    /* Zarın "6" olduğunu temsil eden yuvarlaklar, altı noktada */
+}
+
+.dice.no-animation::before {
+    visibility: hidden; /* Atış sırasında yuvarlağı gizle */
+}
+
+.dice.animate {
+    animation: roll 4s cubic-bezier(0.2, 1, 0.3, 1) forwards; /* Animasyonu 4 saniye yap */
+}
+
+@keyframes roll {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+        transform: rotateX(360deg) rotateY(0deg);
+    }
+    50% {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+    75% {
+        transform: rotateX(0deg) rotateY(360deg);
+    }
+    100% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
